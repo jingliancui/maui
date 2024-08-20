@@ -201,19 +201,19 @@ namespace Microsoft.Maui.TestCases.Tests
 				int cropFromBottom = _testDevice switch
 				{
 					TestDevice.Android => 125,
-					TestDevice.Windows => 1,
+					TestDevice.Windows => 2,
 					_ => 0,
 				};
 
 				var cropFromLeft = _testDevice switch
 				{
-					TestDevice.Windows => 1,
+					TestDevice.Windows => 2,
 					_ => 0,
 				};
 
 				var cropFromRight = _testDevice switch
 				{
-					TestDevice.Windows => 1,
+					TestDevice.Windows => 2,
 					_ => 0,
 				};
 
