@@ -470,7 +470,7 @@ class MiscPage : ContentPage
 #else
 			ThreadPool.QueueUserWorkItem(delegate
 			{ runStressTest(); });
-
+#endif
 		};
 
 		_stressTestProgressBar = new ProgressBar();
