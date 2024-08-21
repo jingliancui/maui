@@ -16,26 +16,26 @@ public class Issue11869 : _IssuesUITest
 	[Category(UITestCategories.Shell)]
 	public void IsVisibleWorksForShowingHidingTabs()
 	{
-		RunningApp.WaitForElement("TopTab2");
-		RunningApp.Tap("HideTop2");
-		RunningApp.WaitForNoElement("TopTab2");
+		App.WaitForElement("TopTab2");
+		App.Tap("HideTop2");
+		App.WaitForNoElement("TopTab2");
 
-		RunningApp.WaitForElement("TopTab3");
-		RunningApp.Tap("HideTop3");
-		RunningApp.WaitForNoElement("TopTab3");
+		App.WaitForElement("TopTab3");
+		App.Tap("HideTop3");
+		App.WaitForNoElement("TopTab3");
 
-		RunningApp.WaitForElement("Tab 2");
-		RunningApp.Tap("HideBottom2");
-		RunningApp.WaitForNoElement("Tab 2");
+		App.WaitForElement("Tab 2");
+		App.Tap("HideBottom2");
+		App.WaitForNoElement("Tab 2");
 
-		RunningApp.WaitForElement("Tab 3");
-		RunningApp.Tap("HideBottom3");
-		RunningApp.WaitForNoElement("Tab 3");
+		App.WaitForElement("Tab 3");
+		App.Tap("HideBottom3");
+		App.WaitForNoElement("Tab 3");
 
-		RunningApp.Tap("ShowAllTabs");
-		RunningApp.WaitForElement("TopTab2");
-		RunningApp.WaitForElement("TopTab3");
-		RunningApp.WaitForElement("Tab 2");
-		RunningApp.WaitForElement("Tab 3");
+		App.Tap("ShowAllTabs");
+		App.WaitForElement("TopTab2");
+		App.WaitForElement("TopTab3");
+		App.WaitForElement("Tab 2");
+		App.WaitForElement("Tab 3");
 	}
 }
