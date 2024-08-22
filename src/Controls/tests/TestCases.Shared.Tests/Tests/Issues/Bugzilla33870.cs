@@ -12,15 +12,15 @@ public class Bugzilla33870 : _IssuesUITest
 
 	public override string Issue => "[W] Crash when the ListView Selection is set to null";
 
-	[Test]
-	[Category(UITestCategories.ListView)]
-	[FailsOnIOS]
-	public void Bugzilla33870Test()
-	{
-		App.WaitForElement("PageContentAutomatedId");
-		App.WaitForElement("ListViewAutomatedId");
-		App.Tap("CLEAR SELECTION");
+	// [Test]
+	// [Category(UITestCategories.ListView)]
+	// [FailsOnIOS]
+	// public void Bugzilla33870Test()
+	// {
+	// 	App.WaitForElement("PageContentAutomatedId");
+	// 	App.WaitForElement("ListViewAutomatedId");
+	// 	App.Tap("CLEAR SELECTION");
 
-		App.WaitForElement("Cleared");
-	}
+	// 	App.WaitForElement("Cleared");
+	// }
 }

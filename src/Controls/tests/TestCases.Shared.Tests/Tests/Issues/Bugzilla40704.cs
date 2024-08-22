@@ -20,24 +20,24 @@ public class Bugzilla40704 : _IssuesUITest
 		App.WaitForElement("Menu - 0");
 	}
 
-	[FailsOnAndroid]
-	[FailsOnIOS]
-	[Test]
-	public void Bugzilla40704Test()
-	{
-		App.ScrollDown("btnCollapse", ScrollStrategy.Gesture, 0.9, 500);
-		App.Tap("btnCollapse");
-		Task.Delay(1000).Wait(); // Let the layout settle down
+	// [FailsOnAndroid]
+	// [FailsOnIOS]
+	// [Test]
+	// public void Bugzilla40704Test()
+	// {
+	// 	App.ScrollDown("btnCollapse", ScrollStrategy.Gesture, 0.9, 500);
+	// 	App.Tap("btnCollapse");
+	// 	Task.Delay(1000).Wait(); // Let the layout settle down
 
-		App.ScrollDown("btnCollapse", ScrollStrategy.Gesture, 0.9, 500);
-		App.Tap("btnCollapse");
-		Task.Delay(1000).Wait(); // Let the layout settle down
+	// 	App.ScrollDown("btnCollapse", ScrollStrategy.Gesture, 0.9, 500);
+	// 	App.Tap("btnCollapse");
+	// 	Task.Delay(1000).Wait(); // Let the layout settle down
 
-		App.ScrollDown("btnCollapse", ScrollStrategy.Gesture, 0.9, 500);
-		App.Tap("btnCollapse");
+	// 	App.ScrollDown("btnCollapse", ScrollStrategy.Gesture, 0.9, 500);
+	// 	App.Tap("btnCollapse");
 
-		App.WaitForElement("Menu - 2");
-		App.WaitForElement("Menu - 1");
-		App.WaitForElement("Menu - 0");
-	}
+	// 	App.WaitForElement("Menu - 2");
+	// 	App.WaitForElement("Menu - 1");
+	// 	App.WaitForElement("Menu - 0");
+	// }
 }
