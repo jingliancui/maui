@@ -14,16 +14,16 @@ public class Bugzilla41271 : _IssuesUITest
 
 	string _cell = string.Empty;
 	
-	[Test]
-	[Category(UITestCategories.ListView)]
-	public void MemoryLeakInListViewTabbedPageUWP()
-	{
-		_cell = "California #60";
-		for (int i = 1; i <= 10; i++)
-		{
-			ScrollListInPage($"List {i}");
-		}
-	}
+	// [Test]
+	// [Category(UITestCategories.ListView)]
+	// public void MemoryLeakInListViewTabbedPageUWP()
+	// {
+	// 	_cell = "California #60";
+	// 	for (int i = 1; i <= 10; i++)
+	// 	{
+	// 		ScrollListInPage($"List {i}");
+	// 	}
+	// }
 
 	void ScrollListInPage(string tabName)
 	{

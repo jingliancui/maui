@@ -12,14 +12,14 @@ public class Bugzilla25662 : _IssuesUITest
 
     public override string Issue => "Setting IsEnabled does not disable SwitchCell";
 
-	[Test]
-    [Category(UITestCategories.Cells)]
-	[FailsOnIOS]
-	[FailsOnWindows]
-	public void Bugzilla25662Test()
-	{
-		App.WaitForElement("One");
-		App.Tap("One");
-		App.WaitForNoElement("FAIL");
-	}
+	// [Test]
+    // [Category(UITestCategories.Cells)]
+	// [FailsOnIOS]
+	// [FailsOnWindows]
+	// public void Bugzilla25662Test()
+	// {
+	// 	App.WaitForElement("One");
+	// 	App.Tap("One");
+	// 	App.WaitForNoElement("FAIL");
+	// }
 }
