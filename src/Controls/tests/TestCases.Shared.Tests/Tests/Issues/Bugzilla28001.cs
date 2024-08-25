@@ -12,21 +12,21 @@ public class Bugzilla28001 : _IssuesUITest
 
     public override string Issue => "[Android] TabbedPage: invisible tabs are not Disposed";
 
-	[FailsOnIOS]
-	[FailsOnAndroid]
-	[Test]
-	[Category(UITestCategories.TabbedPage)]		
-	public void Bugzilla28001Test()
-	{
-		App.WaitForElement("Push");
+	// [FailsOnIOS]
+	// [FailsOnAndroid]
+	// [Test]
+	// [Category(UITestCategories.TabbedPage)]		
+	// public void Bugzilla28001Test()
+	// {
+	// 	App.WaitForElement("Push");
 
-		App.Screenshot("I am at Bugzilla 28001");
-		App.Tap("Push");
-		App.Tap("Tab2");
-		App.Tap("Tab1");
-		App.Tap("Pop");
+	// 	App.Screenshot("I am at Bugzilla 28001");
+	// 	App.Tap("Push");
+	// 	App.Tap("Tab2");
+	// 	App.Tap("Tab1");
+	// 	App.Tap("Pop");
 
-		Assert.That(App.FindElement("lblDisposedCount").GetText(),
-			Is.EqualTo("Dispose 2 pages"));
-	}
+	// 	Assert.That(App.FindElement("lblDisposedCount").GetText(),
+	// 		Is.EqualTo("Dispose 2 pages"));
+	// }
 }

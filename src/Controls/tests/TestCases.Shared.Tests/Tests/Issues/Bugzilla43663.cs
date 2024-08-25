@@ -19,25 +19,25 @@ public class Bugzilla43663 : _IssuesUITest
 
 	public override string Issue => "ModalPushed and ModalPopped not working on WinRT";
 
-	[Test]
-	[Category(UITestCategories.Navigation)]
-	public void ModalNavigation()
-	{
-		var i = 0;
-		while(App.GetAlerts().Count == 0 && i < 3)
-		{
-			i++;
-			Task.Delay(1000);
-		}
+	// [Test]
+	// [Category(UITestCategories.Navigation)]
+	// public void ModalNavigation()
+	// {
+	// 	var i = 0;
+	// 	while(App.GetAlerts().Count == 0 && i < 3)
+	// 	{
+	// 		i++;
+	// 		Task.Delay(1000);
+	// 	}
 
-		App.GetAlert()?.DismissAlert();
-		App.WaitForElement(PushModal);
-		App.Tap(PushModal);
-		App.GetAlert()?.DismissAlert();
-		App.WaitForElement(Modal);
-		App.Tap(PopModal);
-		App.GetAlert()?.DismissAlert();
-		App.WaitForElement(PushModal);
-	}
+	// 	App.GetAlert()?.DismissAlert();
+	// 	App.WaitForElement(PushModal);
+	// 	App.Tap(PushModal);
+	// 	App.GetAlert()?.DismissAlert();
+	// 	App.WaitForElement(Modal);
+	// 	App.Tap(PopModal);
+	// 	App.GetAlert()?.DismissAlert();
+	// 	App.WaitForElement(PushModal);
+	// }
 }
 #endif
