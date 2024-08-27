@@ -50,7 +50,7 @@ namespace Microsoft.Maui.Handlers
 			[Export("sendMessage")]
 			public void SendMessage(string message)
 			{
-				Handler?.VirtualView?.MessageReceived(message);
+				Handler?.MessageReceived(message);
 			}
 		}
 

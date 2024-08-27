@@ -85,7 +85,7 @@ namespace Microsoft.Maui.Handlers
 
 		private void MessageReceived(Uri uri, string message)
 		{
-			VirtualView?.MessageReceived(message);
+			MessageReceived(message);
 		}
 
 		protected override void ConnectHandler(WKWebView platformView)

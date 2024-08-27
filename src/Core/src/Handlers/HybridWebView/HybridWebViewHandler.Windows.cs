@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.Web.WebView2.Core;
-using Windows.Foundation;
 using Windows.Storage.Streams;
 
 namespace Microsoft.Maui.Handlers
@@ -102,7 +101,7 @@ namespace Microsoft.Maui.Handlers
 
 		private void OnWebMessageReceived(WebView2 sender, CoreWebView2WebMessageReceivedEventArgs args)
 		{
-			VirtualView?.MessageReceived(args.TryGetWebMessageAsString());
+			MessageReceived(args.TryGetWebMessageAsString());
 		}
 
 		private async void OnWebResourceRequested(CoreWebView2 sender, CoreWebView2WebResourceRequestedEventArgs eventArgs)
