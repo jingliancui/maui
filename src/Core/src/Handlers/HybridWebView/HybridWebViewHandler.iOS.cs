@@ -59,18 +59,9 @@ namespace Microsoft.Maui.Handlers
 			return new MauiHybridWebView(this, RectangleF.Empty, config);
 		}
 
-		public static void MapEvaluateJavaScriptAsync(IHybridWebViewHandler handler, IHybridWebView hybridWebView, object? arg)
+		internal static void EvaluateJavaScript(IHybridWebViewHandler handler, IHybridWebView hybridWebView, EvaluateJavaScriptAsyncRequest request)
 		{
-			if (arg is EvaluateJavaScriptAsyncRequest request)
-			{
-				if (handler.PlatformView is null)
-				{
-					request.SetCanceled();
-					return;
-				}
-
-				handler.PlatformView.EvaluateJavaScript(request);
-			}
+			handler.PlatformView.EvaluateJavaScript(request);
 		}
 
 		public static void MapSendRawMessage(IHybridWebViewHandler handler, IHybridWebView hybridWebView, object? arg)

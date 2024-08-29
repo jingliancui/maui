@@ -2,7 +2,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization.Metadata;
 using System.Threading.Tasks;
-using Microsoft.Maui.Devices;
 
 namespace Microsoft.Maui.Controls
 {
@@ -78,8 +77,6 @@ namespace Microsoft.Maui.Controls
 				throw new ArgumentException($"The number of parameter values does not match the number of parameter JSON type infos.", nameof(paramValues));
 			}
 
-			var invokeResultTaskCompletionSource = new TaskCompletionSource<string>();
-
 			var result = await Handler?.InvokeAsync(
 				nameof(IHybridWebView.InvokeJavaScriptAsync),
 				new HybridWebViewInvokeJavaScriptRequest(methodName, paramValues, paramJsonTypeInfos))!;
@@ -116,39 +113,8 @@ namespace Microsoft.Maui.Controls
 				return null;
 			}
 
-			// Make all the platforms mimic Android's implementation, which is by far the most complete.
-			if (DeviceInfo.Platform != DevicePlatform.Android)
-			{
-				script = WebView.EscapeJsString(script);
-
-				if (DeviceInfo.Platform != DevicePlatform.WinUI)
-				{
-					// Use JSON.stringify() method to converts a JavaScript value to a JSON string
-					script = "try{JSON.stringify(eval('" + script + "'))}catch(e){'null'};";
-				}
-				else
-				{
-					script = "try{eval('" + script + "')}catch(e){'null'};";
-				}
-			}
-
-			string? result;
-
-			// Use the handler command to evaluate the JS
-			result = await Handler!.InvokeAsync(nameof(IHybridWebView.EvaluateJavaScriptAsync),
+			var result = await Handler!.InvokeAsync(nameof(IHybridWebView.EvaluateJavaScriptAsync),
 				new EvaluateJavaScriptAsyncRequest(script));
-
-			//if the js function errored or returned null/undefined treat it as null
-			if (result == "null")
-			{
-				result = null;
-			}
-			//JSON.stringify wraps the result in literal quotes, we just want the actual returned result
-			//note that if the js function returns the string "null" we will get here and not above
-			else if (result != null)
-			{
-				result = result.Trim('"');
-			}
 
 			return result;
 		}
