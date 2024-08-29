@@ -43,6 +43,7 @@ Information("Project File: {0}", projectPath);
 Information("Build Binary Log (binlog): {0}", binlogDirectory);
 Information("Build Configuration: {0}", configuration);
 Information("Build Target Framework: {0}", targetFramework);
+Information("Testing Device: {0}", testDevice);
 
 var avdSettings = new AndroidAvdManagerToolSettings { SdkRoot = androidSdkRoot };
 var adbSettings = new AdbToolSettings { SdkRoot = androidSdkRoot };
@@ -153,7 +154,7 @@ void ExecuteCGLegacyUITests(string project, string appProject, string appPackage
 void ExecuteBuild(string project, string device, string binDir, string config, string tfm, string toolPath)
 {
 	var projectName = System.IO.Path.GetFileNameWithoutExtension(project);
-	var binlog = $"{binDir}/{projectName}-{config}-ios.binlog";
+	var binlog = $"{binDir}/{projectName}-{config}-android.binlog";
 
 	DotNetBuild(project, new DotNetBuildSettings
 	{
