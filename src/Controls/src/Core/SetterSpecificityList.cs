@@ -25,7 +25,9 @@ namespace Microsoft.Maui.Controls
 			{
 				_first = new KeyValuePair<SetterSpecificity, object>(specificity, value);
 				if (_values is not null)
-					_values[specificity] = value;
+					lock(_values) {
+						_values[specificity] = value;
+					}
 				return;
 			}
 
@@ -33,7 +35,9 @@ namespace Microsoft.Maui.Controls
 			{
 				_second = new KeyValuePair<SetterSpecificity, object>(specificity, value);
 				if (_values is not null)
-					_values[specificity] = value;
+					lock(_values) {
+						_values[specificity] = value;
+					}
 				return;
 			}
 
@@ -48,12 +52,19 @@ namespace Microsoft.Maui.Controls
 				_first = null;
 				_second = null;
 			}
-			_values[specificity] = value;
+			lock(_values) {
+				_values[specificity] = value;
+			}
 		}
 
 		public void Remove(SetterSpecificity specificity)
 		{
-			_values?.Remove(specificity);
+			if (_values is not null)
+			{
+				lock(_values) {
+					_values.Remove(specificity);
+				}
+			}
 			if (_first is not null && _first.Value.Key == specificity)
 				_first = null;
 			if (_second is not null && _second.Value.Key == specificity)
@@ -63,9 +74,11 @@ namespace Microsoft.Maui.Controls
 		public KeyValuePair<SetterSpecificity, object> GetSpecificityAndValue()
 		{
 			// Slow path calls SortedList.Last()
-			if (_values is not null)
-				return _values.Last();
-
+			if (_values is not null) {
+				lock(_values) {
+					return _values.Last();
+				}
+			}
 			// Fast path accesses _first and _second
 			if (_first is not null && _second is not null)
 			{
@@ -97,10 +110,12 @@ namespace Microsoft.Maui.Controls
 		{
 			if (_values is not null)
 			{
-				var index = _values.IndexOfKey(clearedSpecificity);
-				if (index == _values.Count - 1) //last value will be cleared
-					return _values.Count >= 2 ? _values[_values.Keys[_values.Count - 2]] : null;
-				return _values.Last().Value;
+				lock(_values) {
+					var index = _values.IndexOfKey(clearedSpecificity);
+					if (index == _values.Count - 1) //last value will be cleared
+						return _values.Count >= 2 ? _values[_values.Keys[_values.Count - 2]] : null;
+					return _values.Last().Value;
+				}
 			}
 
 			// Fast path should return the "lower" value
